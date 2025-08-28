@@ -3,23 +3,27 @@ name=acmecorp
 
 .PHONY: deps
 deps:
-	npm install --no-audit --no-fund
+	yarn install --frozen-lockfile || yarn install
 
 .PHONY: develop
 develop: deps
-	npm run dev
+	yarn dev
+
+.PHONY: run
+run:
+	yarn dev
 
 .PHONY: preview
 preview: deps
-	npm run build && npm run preview
+	yarn build && yarn start
 
 .PHONY: build
 build: deps
-	npm run build
+	yarn build
 
 .PHONY: clean
 clean:
-	rm -rf node_modules dist
+	rm -rf node_modules .next out
 
 # Back-compat similar to Caramil naming
 .PHONY: develop-site preview-site build-site
