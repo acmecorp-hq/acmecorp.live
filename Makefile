@@ -16,7 +16,7 @@ run:
 
 .PHONY: preview
 preview: deps
-	yarn build && yarn start
+	yarn preview
 
 .PHONY: build
 build: deps
