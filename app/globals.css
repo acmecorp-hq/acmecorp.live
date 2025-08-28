@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Extended tokens to match existing site */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+  .font-display {
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #0B3D91, #0E7C86);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(11, 61, 145, 0.3);
+  }
+}
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
