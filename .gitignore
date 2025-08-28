@@ -23,4 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 
-.env
+.env# Build outputs
+out/
+.next/
+dist/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# OS/files
+.DS_Store
