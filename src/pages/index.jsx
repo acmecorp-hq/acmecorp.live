@@ -16,7 +16,7 @@ import RetailHub from "./RetailHub";
 
 import Team from "./Team";
 
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom';
 
 const PAGES = {
     
@@ -75,7 +75,10 @@ function PagesContent() {
                 
                 <Route path="/Catalog" element={<Catalog />} />
                 
-                <Route path="/RetailHub" element={<RetailHub />} />
+                {/* New preferred path for Retail Hub */}
+                <Route path="/catalog/retail-hub" element={<RetailHub />} />
+                {/* Backward-compat redirect */}
+                <Route path="/RetailHub" element={<Navigate to="/catalog/retail-hub" replace />} />
                 
                 <Route path="/Team" element={<Team />} />
                 
