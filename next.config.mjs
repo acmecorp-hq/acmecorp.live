@@ -11,9 +11,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   poweredByHeader: false,
-  devIndicators: {
-    buildActivity: false,
-  },
 };
 
 export default nextConfig;
