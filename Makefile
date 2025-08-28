@@ -3,7 +3,8 @@ name=acmecorp
 
 .PHONY: deps
 deps:
-	yarn install --frozen-lockfile || yarn install
+	corepack enable || true
+	yarn install --immutable || yarn install
 
 .PHONY: develop
 develop: deps
