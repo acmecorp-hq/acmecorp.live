@@ -27,9 +27,13 @@ jobs:
         with:
           node-version: 20
           cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Enable Corepack (Yarn)
         run: corepack enable
+
+      - name: Activate Yarn 3 via Corepack
+        run: corepack prepare yarn@3.6.4 --activate
 
       - name: Install dependencies
         run: yarn install --immutable
