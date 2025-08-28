@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "export": "next export",
+    "preview": "yarn build && serve out -s -l 4173",
     "start": "next start",
     "lint": "eslint"
   },
@@ -23,6 +25,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
+    "serve": "^14.2.4",
     "tailwindcss": "^4",
     "typescript": "^5.9.2"
   },

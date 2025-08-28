@@ -26,26 +26,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
-          cache-dependency-path: yarn.lock
 
-      - name: Enable Corepack (Yarn)
-        run: corepack enable
-
-      - name: Activate Yarn 3 via Corepack
-        run: corepack prepare yarn@3.6.4 --activate
-
-      - name: Verify Yarn version
-        run: corepack yarn --version | xargs echo "Using Yarn version:"
-
-      - name: Install dependencies
-        run: corepack yarn install --immutable
-
+      # Enables Pages and provides metadata; safe to run in all builds
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Install dependencies (Corepack + Yarn 3)
+        run: |
+          corepack enable
+          # Ensure project Yarn version via Corepack (reads packageManager)
+          corepack install
+          yarn --version | xargs echo "Using Yarn version:"
+          yarn --immutable
+
+      # Build and export static site (Next.js output: 'export' writes to ./out)
       - name: Build static export
-        run: corepack yarn build
+        run: |
+          yarn build
+          # Ensure 404.html exists for SPA deep links if Next didn't emit one
+          if [ -f out/index.html ] && [ ! -f out/404.html ]; then
+            cp out/index.html out/404.html
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
