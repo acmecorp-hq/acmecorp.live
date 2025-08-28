@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "export": "next export",
-    "preview": "yarn build && serve out -s -l 4173",
+    "preview": "yarn build && serve out -s -l 3000",
     "start": "next start",
     "lint": "eslint"
   },
