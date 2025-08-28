@@ -21,6 +21,12 @@ preview: deps
 build: deps
 	yarn build
 
+.PHONY: export
+export: deps
+	yarn build
+	mkdir -p dist
+	rsync -a out/ dist/
+
 .PHONY: clean
 clean:
 	rm -rf node_modules .next out
