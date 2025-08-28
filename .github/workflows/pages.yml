@@ -35,14 +35,17 @@ jobs:
       - name: Activate Yarn 3 via Corepack
         run: corepack prepare yarn@3.6.4 --activate
 
+      - name: Verify Yarn version
+        run: corepack yarn --version | xargs echo "Using Yarn version:"
+
       - name: Install dependencies
-        run: yarn install --immutable
+        run: corepack yarn install --immutable
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Build static export
-        run: yarn build
+        run: corepack yarn build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
